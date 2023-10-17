@@ -11,8 +11,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $valor = $_POST['valor'];
     $file = $_POST['imagem'];
 
-    #Passando instruções SQL para o banco
-    #Validando se o produto existe
+    #Trim no nome e na descrição do produto para impedir o cadastro de produtos e descrições com espaços no começo e fim do texto.
+    $nome = trim($nome);
+    $descricao = trim($descricao);
+
+
+    #Passando instruções SQL para o banco.
+    #Validando se o produto existe.
     $sql = "SELECT COUNT(prod_id) FROM produtos WHERE prod_nome = '$nome'";
     $retorno = mysqli_query($link, $sql);
     while ($tbl = mysqli_fetch_array($retorno)){
@@ -24,20 +29,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         echo ("<script>window.alert('Produto Já Cadastrado!');</script>");
     }
     else{
-        $sql = "INSERT INTO produtos(prod_nome, prod_descrição, prod_quantidade, prod_valor, prod_ativo, prod_imagem) VALUES('$nome','$descricao','$quantidade','$valor','n','$file')";
-        mysqli_query($link, $sql);
-        echo ("<script>window.alert('Produto Cadastrado');</script>");
-        echo ("<script>window.location.href='cadastroprodutos.php';</script>");
+        #Verificando se caso o nome ou descrição esteja vazios devido ao Trim.
+        if ($nome == "" || $descricao == ""){
+            echo ("<script>window.alert('Por favor preencha os campos corretamente');</script>");
+            echo ("<script>window.location.href='cadastroprodutos.php';</script>"); 
+        }
+        else{
+         $sql = "INSERT INTO produtos(prod_nome, prod_descrição, prod_quantidade, prod_valor, prod_ativo, prod_imagem) VALUES('$nome','$descricao','$quantidade','$valor','n','$file')";
+         mysqli_query($link, $sql);
+         echo ("<script>window.alert('Produto Cadastrado');</script>");
+         echo ("<script>window.location.href='cadastroprodutos.php';</script>"); 
+        }
     }
 }
+#Verificando caso o server não tenha recebido um metodo post.
 else if (!$_SERVER["REQUEST_METHOD"] == "POST"){
     echo ("Erro no método post.");
 }
+
 ?>
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,9 +65,9 @@ else if (!$_SERVER["REQUEST_METHOD"] == "POST"){
             <br>
             <input type="text" name="descricao" placeholder="Descrição do produto" required>
             <br>
-            <input type="number" name="quantidade" id="valor" placeholder="Quantidade" required>
+            <input type="number" name="quantidade" id="valor" placeholder="Quantidade" min="0" required>
             <br>
-            <input type="number" name="valor" id="valor" step="0.01" placeholder="Valor do produto" required>
+            <input type="number" name="valor" id="valor" step="0.01" placeholder="Valor do produto" min="0" required>
             <br>
             <input type="file" name="imagem" id="imagem" placeholder="Insira sua imagem">
             <br>
