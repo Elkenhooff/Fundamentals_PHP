@@ -4,50 +4,48 @@
 include("conectadb.php");
 
 #Coleta de Variáveis via formulário de html
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $senha = $_POST['senha'];
 
     #Trim no nome para remover os espaços em branco (no começo e no final do campo)
     $nome = trim($nome);
-        
+
     #Validando a senha
     #Expressão regular para verificar se a senha contém apenas letras, números e caracteres especiais permitidos
     if (!preg_match('/^[a-zA-Z0-9!@#$%^&*()-_+=]*$/', $senha)) {
         echo ("<script>window.alert('Por favor informe que contém caracteres especiais permitidos');</script>");
-        echo ("<script>window.location.href='cadastrousuario.php';</script>"); 
-    }
-    else{
+        echo ("<script>window.location.href='cadastrousuario.php';</script>");
+    } else {
         #Passando instruções SQL para o banco
         #Validando se o usuário existe
         $sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_nome = '$nome'";
         $retorno = mysqli_query($link, $sql);
-        while ($tbl = mysqli_fetch_array($retorno)){
+        while ($tbl = mysqli_fetch_array($retorno)) {
             $cont = $tbl[0];
         }
 
         #Verificação se o usuario existe, se existe = 1, se não = 0.
-        if ($cont == 1){
+        if ($cont == 1) {
             echo ("<script>window.alert('Usuário Já Cadastrado!');</script>");
-        }
-        else{
+        } else {
             #Verificação se o nome é vazio, caso a pessoa insira somente espaço (SPACEBAR) no campo usuário
-            if ($nome == ""){
+            if ($nome == "") {
                 echo ("<script>window.alert('Por favor preencha os campos corretamente');</script>");
-                echo ("<script>window.location.href='cadastrousuario.php';</script>"); 
+                echo ("<script>window.location.href='cadastrousuario.php';</script>");
             }
             #Se não for vazio:
-            else{
+            else {
                 $sql = "INSERT INTO usuarios (usu_nome, usu_senha, usu_ativo) VALUES('$nome', '$senha', 'n')";
                 mysqli_query($link, $sql);
                 echo ("<script>window.alert('Usuário Cadastrado');</script>");
                 echo ("<script>window.location.href='cadastrousuario.php';</script>");
-            }  
+            }
         }
     }
 }
 #Verificando caso o server não tenha recebido um metodo post.
-else if (!$_SERVER["REQUEST_METHOD"] == "POST"){
+else if (!$_SERVER["REQUEST_METHOD"] == "POST") {
     echo ("Erro no método post.");
 }
 
@@ -56,12 +54,14 @@ else if (!$_SERVER["REQUEST_METHOD"] == "POST"){
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
     <link rel="stylesheet" href="./css/estiloadm.css">
 </head>
+
 <body>
     <div class="main-content">
         <form action="cadastrousuario.php" method="post">
@@ -72,6 +72,7 @@ else if (!$_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="submit" name="cadastro" id="cadastro" placeholder="Cadastrar">
         </form>
     </div>
-    
+
 </body>
+
 </html>

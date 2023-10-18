@@ -4,7 +4,7 @@
 include("conectadb.php");
 
 #Coleta de Variáveis via formulário de html
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $quantidade = $_POST['quantidade'];
@@ -20,30 +20,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     #Validando se o produto existe.
     $sql = "SELECT COUNT(prod_id) FROM produtos WHERE prod_nome = '$nome'";
     $retorno = mysqli_query($link, $sql);
-    while ($tbl = mysqli_fetch_array($retorno)){
+    while ($tbl = mysqli_fetch_array($retorno)) {
         $cont = $tbl[0];
     }
 
     #Verificação se o produto existe, se existe = 1, se não = 0.
-    if ($cont == 1){
+    if ($cont == 1) {
         echo ("<script>window.alert('Produto Já Cadastrado!');</script>");
-    }
-    else{
+    } else {
         #Verificando se caso o nome ou descrição esteja vazios devido ao Trim.
-        if ($nome == "" || $descricao == ""){
+        if ($nome == "" || $descricao == "") {
             echo ("<script>window.alert('Por favor preencha os campos corretamente');</script>");
-            echo ("<script>window.location.href='cadastroprodutos.php';</script>"); 
-        }
-        else{
-         $sql = "INSERT INTO produtos(prod_nome, prod_descrição, prod_quantidade, prod_valor, prod_ativo, prod_imagem) VALUES('$nome','$descricao','$quantidade','$valor','n','$file')";
-         mysqli_query($link, $sql);
-         echo ("<script>window.alert('Produto Cadastrado');</script>");
-         echo ("<script>window.location.href='cadastroprodutos.php';</script>"); 
+            echo ("<script>window.location.href='cadastroprodutos.php';</script>");
+        } else {
+            $sql = "INSERT INTO produtos(prod_nome, prod_descrição, prod_quantidade, prod_valor, prod_ativo, prod_imagem) VALUES('$nome','$descricao','$quantidade','$valor','n','$file')";
+            mysqli_query($link, $sql);
+            echo ("<script>window.alert('Produto Cadastrado');</script>");
+            echo ("<script>window.location.href='cadastroprodutos.php';</script>");
         }
     }
 }
 #Verificando caso o server não tenha recebido um metodo post.
-else if (!$_SERVER["REQUEST_METHOD"] == "POST"){
+else if (!$_SERVER["REQUEST_METHOD"] == "POST") {
     echo ("Erro no método post.");
 }
 
@@ -52,12 +50,14 @@ else if (!$_SERVER["REQUEST_METHOD"] == "POST"){
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Produtos</title>
     <link rel="stylesheet" href="./css/estiloadm.css">
 </head>
+
 <body>
     <div class="main-content">
         <form action="cadastroprodutos.php" method="post">
@@ -74,6 +74,7 @@ else if (!$_SERVER["REQUEST_METHOD"] == "POST"){
             <button type="submit" name="cadastro" id="btn">Cadastrar</button>
         </form>
     </div>
-    
+
 </body>
+
 </html>
