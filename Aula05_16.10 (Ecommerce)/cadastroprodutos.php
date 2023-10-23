@@ -11,10 +11,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $valor = $_POST['valor'];
     $file = $_POST['imagem'];
 
+    #Para trocar os "," por "."
+    #$valor = str_replace(",", ".", $_POST["preco"]); (Erro?)
+
     #Trim no nome e na descrição do produto para impedir o cadastro de produtos e descrições com espaços no começo e fim do texto.
     $nome = trim($nome);
     $descricao = trim($descricao);
 
+    #Inserção e criptografia da imagem
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
+        $tipo = exif_imagetype($_FILES['imagem']['nometemporario']);
+
+        if ($tipo !== false){
+            #Se o arquivo é uma imagem
+            $imagem_temp = $_FILES['imagem']['nometemporario'];
+            $imagem = file_get_contents($imagem_temp);
+            $imagem_base64 = base64_encode($imagem);
+        }
+        else{
+            #Se o arquivo não é uma imagem
+            $imagem = file_get_contents('C:\xampp\htdocs\UC15_PHP\Aula05_16.10 (Ecommerce)\img\noimg.jfif');
+            $imagem_base64 = base64_encode($imagem);
+        }
+    }
+    else{
+        #Se o arquivo não foi enviado.
+        $imagem = file_get_contents('C:\xampp\htdocs\UC15_PHP\Aula05_16.10 (Ecommerce)\img\noimg.jfif');
+        $imagem_base64 = base64_encode($imagem);
+    }
 
     #Passando instruções SQL para o banco.
     #Validando se o produto existe.
@@ -33,16 +57,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo ("<script>window.alert('Por favor preencha os campos corretamente');</script>");
             echo ("<script>window.location.href='cadastroprodutos.php';</script>");
         } else {
-            $sql = "INSERT INTO produtos(prod_nome, prod_descrição, prod_quantidade, prod_valor, prod_ativo, prod_imagem) VALUES('$nome','$descricao','$quantidade','$valor','n','$file')";
+            $sql = "INSERT INTO produtos(prod_nome, prod_descrição, prod_quantidade, prod_valor, prod_ativo, prod_imagem) VALUES('$nome','$descricao','$quantidade','$valor','n','$imagem_base64')";
             mysqli_query($link, $sql);
             echo ("<script>window.alert('Produto Cadastrado');</script>");
             echo ("<script>window.location.href='cadastroprodutos.php';</script>");
         }
     }
-}
-#Verificando caso o server não tenha recebido um metodo post.
-else if (!$_SERVER["REQUEST_METHOD"] == "POST") {
-    echo ("Erro no método post.");
 }
 
 ?>

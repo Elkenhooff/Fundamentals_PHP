@@ -44,10 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-#Verificando caso o server não tenha recebido um metodo post.
-else if (!$_SERVER["REQUEST_METHOD"] == "POST") {
-    echo ("Erro no método post.");
-}
 
 ?>
 
@@ -68,6 +64,8 @@ else if (!$_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" name="nome" id="nome" placeholder="Nome do Usuário" required>
             <br>
             <input type="password" name="senha" id="senha" placeholder="Senha" required>
+            <span id="MostrarSenha" class="MostrarSenha" onclick="MostrarSenha()">👀</span>
+            <br>
             <br>
             <input type="submit" name="cadastro" id="cadastro" placeholder="Cadastrar">
         </form>
@@ -75,4 +73,19 @@ else if (!$_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 
+<script>
+    function MostrarSenha(){
+        var senhaInput = document.getElementById("senha");
+        var senhaIcone = document.getElementById("MostrarSenha");
+
+        if (senhaInput.type === "password"){
+            senhaInput.type = "text";
+            senhaIcone.textContent = "🙈";
+        }
+        else{
+            senhaInput.type = "password";
+            senhaIcone.textContent = "👀";
+        }
+    }
+</script>
 </html>
