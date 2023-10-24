@@ -10,10 +10,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     #Trim no nome para remover os espaços em branco (no começo e no final do campo)
     $nome = trim($nome);
+    $senha = trim($senha);
 
     #Validando a senha
     #Expressão regular para verificar se a senha contém apenas letras, números e caracteres especiais permitidos
-    if (!preg_match('/^[a-zA-Z0-9!@#$%^&*()-_+=]*$/', $senha)) {
+    if (!preg_match('/^[a-zA-Z0-9!@#$%^&*( )-_+=]*$/', $senha)) {
         echo ("<script>window.alert('Por favor informe que contém caracteres especiais permitidos');</script>");
         echo ("<script>window.location.href='cadastrousuario.php';</script>");
     } else {
@@ -30,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo ("<script>window.alert('Usuário Já Cadastrado!');</script>");
         } else {
             #Verificação se o nome é vazio, caso a pessoa insira somente espaço (SPACEBAR) no campo usuário
-            if ($nome == "") {
+            if ($nome == "" || $senha == "") {
                 echo ("<script>window.alert('Por favor preencha os campos corretamente');</script>");
                 echo ("<script>window.location.href='cadastrousuario.php';</script>");
             }
@@ -61,13 +62,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="main-content">
         <form action="cadastrousuario.php" method="post">
+        <h2>Cadastro de Usuários</h2>
             <input type="text" name="nome" id="nome" placeholder="Nome do Usuário" required>
             <br>
-            <input type="password" name="senha" id="senha" placeholder="Senha" required>
+            <input type="password" name="senha" id="senha" placeholder="Senha" minlength ="8" maxlength="32" required>
             <span id="MostrarSenha" class="MostrarSenha" onclick="MostrarSenha()">👀</span>
             <br>
             <br>
-            <input type="submit" name="cadastro" id="cadastro" placeholder="Cadastrar">
+            <button type="submit" name="cadastro" id="btn">Cadastrar</button>
         </form>
     </div>
 

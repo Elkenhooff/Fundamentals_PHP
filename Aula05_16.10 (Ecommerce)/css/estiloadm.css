@@ -89,10 +89,51 @@ table {
   width: 75%;
   margin:auto;
 }
-h2{
 
-  color: #e0dceb;
+.main-content{
+  padding-top: 10em;
 }
+
+.main-content #MostrarSenha{
+  position: absolute;
+  margin-left: 260px;
+  margin-top: -43px;
+  cursor: pointer;
+}
+
+.main-content h2{
+  color: #550469;
+  font-weight: bold;
+  margin-left: 0.2em;
+}
+
+.main-content input::placeholder{
+  color: #550469;
+}
+
+.main-content input{
+  border: 2px solid #550469;
+  border-radius: 10px;
+}
+
+.main-content #btn{
+  border: 2px solid #000000;
+  padding: 12px 16px;
+  border-radius: 15px;
+  color: #ffffff;
+  background-color: #550469;
+  transition: 1s;
+  margin-left: 68%;
+  cursor: pointer;
+}
+
+.main-content #btn:hover{
+  border: 2px solid #550469;
+  background-color: #e0dceb;
+  color: #550469;
+  border-radius: 15px;
+}
+
 h1{
 
   color: #e0dceb;

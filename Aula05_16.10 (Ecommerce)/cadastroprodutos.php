@@ -19,12 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descricao = trim($descricao);
 
     #Inserção e criptografia da imagem
-    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
-        $tipo = exif_imagetype($_FILES['imagem']['nometemporario']);
+    if (isset($_FILES['imagem']) && $_FILES['imagem']
+    ['error'] === UPLOAD_ERR_OK){
+        $tipo = exif_imagetype($_FILES['imagem']['tmp_name']);
 
         if ($tipo !== false){
             #Se o arquivo é uma imagem
-            $imagem_temp = $_FILES['imagem']['nometemporario'];
+            $imagem_temp = $_FILES['imagem']['tmp_name'];
             $imagem = file_get_contents($imagem_temp);
             $imagem_base64 = base64_encode($imagem);
         }
@@ -80,8 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="main-content">
-        <form action="cadastroprodutos.php" method="post">
-            <input type="text" name="nome" placeholder="Nome do produto" required>
+        <form action="cadastroprodutos.php" method="post" enctype="multipart/form-data">
+            <input type="text" name="nome" placeholder="Nome do produto" maxlength="30" required>
             <br>
             <input type="text" name="descricao" placeholder="Descrição do produto" required>
             <br>

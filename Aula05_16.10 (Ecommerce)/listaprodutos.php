@@ -20,6 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($ativo == 's') {
         $sql = "SELECT * FROM produtos WHERE prod_ativo = 's'";
         $retorno = mysqli_query($link, $sql);
+    } else if ($ativo == 't') {
+        $sql = "SELECT * FROM produtos ORDER BY prod_id";
+        $retorno = mysqli_query($link, $sql);
     } else {
         $sql = "SELECT * FROM produtos WHERE prod_ativo = 'n'";
         $retorno = mysqli_query($link, $sql);
@@ -46,6 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="radio" name="ativo" class="radio" value="s" required onclick="submit()" <?= $ativo == "s" ? "checked" : "" ?>>ATIVOS</input>
                 <br>
                 <input type="radio" name="ativo" class="radio" value="n" required onclick="submit()" <?= $ativo == "n" ? "checked" : "" ?>>INATIVOS</input>
+                <br>
+                <input type="radio" name="ativo" class="radio" value="t" required onclick="submit()" <?= $ativo == "t" ? "checked" : "" ?>>TODOS</input>
             </form>
         </div>
         <div class="container">
