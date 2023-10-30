@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <td>R$ <?= number_format($tbl[4], 2, ',', '.') ?></td> <!-- Traz somente a coluna 4 [Valor] do banco.-->
                         <td><img src="data:image/jpeg;base64,<?= $tbl[6] ?>" width="100" height="100"></td> <!-- Traz somente a coluna 6 [Imagem] do banco.-->
                         <td><?= $check = ($tbl[5] == "s") ? "SIM" : "NÃO" ?></td>
-                        <td><a href="alterausuario.php?id=<?= $tbl[0] ?>"><input type="button" value="ALTERAR DADOS"></a></td>
+                        <td><a href="alteraprodutos.php?id=<?= $tbl[0] ?>"><input type="button" value="ALTERAR DADOS"></a></td>
                     </tr>
                 <?php
                 }
