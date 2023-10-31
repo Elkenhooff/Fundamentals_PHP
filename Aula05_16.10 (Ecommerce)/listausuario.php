@@ -1,7 +1,7 @@
 <?php
 
 #Abre conexão com o banco de dados
-include('conectadb.php');
+include("cabecalho.php");
 
 #Cria a query que vai ser utilizada
 $sql = "SELECT * FROM usuarios WHERE usu_ativo = 's'";

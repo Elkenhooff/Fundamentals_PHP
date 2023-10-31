@@ -1,7 +1,7 @@
 <?php
 
 #Inicia a conexão com o banco de dados
-include("conectadb.php");
+include("cabecalho.php");
 
 #Coleta de Variáveis via formulário de html
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,6 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($cont == 1) {
             echo ("<script>window.alert('Usuário Já Cadastrado!');</script>");
         } else {
+            #Adicionar o tempero
+            $tempero = md5(rand() . date('H:i:s'));
+            $senha = md5($senha . $tempero);
+
             #Verificação se o nome é vazio, caso a pessoa insira somente espaço (SPACEBAR) no campo usuário
             if ($nome == "" || $senha == "") {
                 echo ("<script>window.alert('Por favor preencha os campos corretamente');</script>");
@@ -37,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             #Se não for vazio:
             else {
-                $sql = "INSERT INTO usuarios (usu_nome, usu_senha, usu_ativo) VALUES('$nome', '$senha', 'n')";
+                $sql = "INSERT INTO usuarios (usu_nome, usu_senha, usu_ativo, usu_tempero) VALUES('$nome', '$senha', 'n' , '$tempero')";
                 mysqli_query($link, $sql);
                 echo ("<script>window.alert('Usuário Cadastrado');</script>");
                 echo ("<script>window.location.href='cadastrousuario.php';</script>");

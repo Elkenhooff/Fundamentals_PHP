@@ -1,7 +1,7 @@
 <?php
 
 #Inicia a conexão com o banco de dados
-include("conectadb.php");
+include("cabecalho.php");
 
 #Coleta de Variáveis via formulário de html
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -82,6 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="main-content">
         <form action="cadastroprodutos.php" method="post" enctype="multipart/form-data">
+            <h2>Cadastro de Produtos</h2>
             <input type="text" name="nome" placeholder="Nome do produto" maxlength="30" required>
             <br>
             <input type="text" name="descricao" placeholder="Descrição do produto" required>
@@ -90,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <br>
             <input type="number" name="valor" id="valor" step="0.01" placeholder="Valor do produto" min="0" required>
             <br>
-            <input type="file" name="imagem" id="imagem" placeholder="Insira sua imagem">
+            <input type="file" name="imagem" placeholder="Insira sua imagem">
             <br>
             <button type="submit" name="cadastro" id="btn">Cadastrar</button>
         </form>

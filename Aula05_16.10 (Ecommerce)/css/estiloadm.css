@@ -92,14 +92,15 @@ table {
 }
 
 .main-content{
-  padding-top: 10em;
+  padding-top: 4em;
 }
 
 .main-content #MostrarSenha{
   position: absolute;
   margin-left: 260px;
-  margin-top: -43px;
+  margin-top: -46px;
   cursor: pointer;
+  font-size: 20px;
 }
 
 .main-content h2{
@@ -124,7 +125,8 @@ table {
   color: #ffffff;
   background-color: #550469;
   transition: 1s;
-  margin-left: 68%;
+  width: 95px;
+  margin-left: 203px;
   cursor: pointer;
 }
 
@@ -137,13 +139,13 @@ table {
 
 #imagem {
   position: absolute;
-  margin-top: -540px;
+  margin-top: -600px;
   margin-left: 700px;
   max-width: 600px;
 }
 
 .main-content2{
-  padding-top: 10em;
+  padding-top: 4em;
   padding-right: 20em;
 }
 
@@ -169,7 +171,8 @@ table {
   color: #ffffff;
   background-color: #550469;
   transition: 1s;
-  margin-left: 68%;
+  width: 95px;
+  margin-left: 203px;
   cursor: pointer;
 }
 
@@ -180,16 +183,11 @@ table {
   border-radius: 15px;
 }
 
-
 #imagem h2{
   text-align: center;
   color: #bf72d3;
 }
 
-h1{
-
-  color: #e0dceb;
-}
 p{
 
   color: #e0dceb;
