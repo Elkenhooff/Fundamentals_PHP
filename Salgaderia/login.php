@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     $sqllog = "INSERT INTO table_log(tab_query, tab_data) VALUES('$sql', NOW())";
 
     $retorno = mysqli_query($link, $sql);
-    $retorno = mysqli_query($link, $sqllog);
+    mysqli_query($link, $sqllog);
 
     while($tbl = mysqli_fetch_array($retorno)){
         $resultado = $tbl[0];
@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $sql = "SELECT * FROM usuarios WHERE usu_login = '$login' AND usu_senha = '$senha' AND usu_status = 's'";
         $retorno = mysqli_query($link, $sql);
         $sqllog = "INSERT INTO table_log(tab_query, tab_data) VALUES('$sql', NOW())";
-        $retorno = mysqli_query($link, $sqllog);
+        mysqli_query($link, $sqllog);
         while ($tbl = mysqli_fetch_array($retorno)){
             $_SESSION['idusuario'] = $tbl[0];
             $_SESSION['nomeusuario'] = $tbl[1];
