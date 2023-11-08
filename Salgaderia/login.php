@@ -4,32 +4,32 @@ session_start();
 include('conectadb.php');
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    $login = $_POST['login'];
-    $senha = $_POST['password'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
-    $sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_login = '$login' AND usu_senha = '$senha' usu_status = 's'";
-    #Grava a Log no banco de Dados
-    $sqllog = "INSERT INTO table_log(tab_query, tab_data) VALUES('$sql', NOW())";
-
+    $sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_email = '$email' AND usu_senha = '$senha' AND usu_status = 's'";
     $retorno = mysqli_query($link, $sql);
+    $retorno = mysqli_fetch_array($retorno)[0];
+
+    #Grava a Log no banco de Dados
+    $sql = '"'.$sql.'"';
+    $sqllog = "INSERT INTO table_log(tab_query, tab_data) VALUES($sql, NOW())";
     mysqli_query($link, $sqllog);
 
-    while($tbl = mysqli_fetch_array($retorno)){
-        $resultado = $tbl[0];
-    }
-
-    if ($resultado == 0){
+    if ($retorno == 0){
         echo("<script>window.alert('Usuário Incorreto');</script>");
+        echo("<script>window.location.href='backoffice.php';</script>");
     }
     else{
-        $sql = "SELECT * FROM usuarios WHERE usu_login = '$login' AND usu_senha = '$senha' AND usu_status = 's'";
+        $sql = "SELECT * FROM usuarios WHERE usu_email = '$email' AND usu_senha = '$senha' AND usu_status = 's'";
         $retorno = mysqli_query($link, $sql);
-        $sqllog = "INSERT INTO table_log(tab_query, tab_data) VALUES('$sql', NOW())";
-        mysqli_query($link, $sqllog);
         while ($tbl = mysqli_fetch_array($retorno)){
             $_SESSION['idusuario'] = $tbl[0];
             $_SESSION['nomeusuario'] = $tbl[1];
         }
+        $sql = '"'.$sql.'"';
+        $sqllog = "INSERT INTO table_log(tab_query, tab_data) VALUES($sql, NOW())";
+        mysqli_query($link, $sqllog);
         echo("<script>window.location.href='backoffice.php';</script>");
     }
 }
