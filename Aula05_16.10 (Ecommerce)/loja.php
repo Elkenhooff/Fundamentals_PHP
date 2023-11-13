@@ -36,7 +36,17 @@ $retorno = mysqli_query($link, $sql);
                         <!-- Ao clicar no botão ele já trará o id do produto para a página do al-->
                         <img src="data:image/jpeg;base64,<?= $tbl[6] ?>" width="100" height="100"></td> <!-- Traz somente a coluna 6 [Imagem] do banco.-->
                         <h2>R$ <?= number_format($tbl[4], 2, ',', '.') ?></h2> <!-- Traz somente a coluna 4 [Valor] do banco.-->
-                        <button type="submit" id="btn">Comprar</button>                    
+                        <?php 
+                            if ($tbl[3] > 0 ){
+                            ?>
+                            <button onclick="location.href='verproduto.php?id=<?=$tbl[0]?>'" id="btn">Comprar</button>
+                            <?php 
+                            } else {
+                            ?>  
+                            <button <?=$tbl[0]?> id="btn3">Fora de Estoque</button>
+                            <?php
+                            }
+                            ?>                  
                     </div>
                 <?php
                 }
