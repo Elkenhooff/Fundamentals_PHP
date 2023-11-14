@@ -4,6 +4,8 @@ session_start();
 isset($_SESSION['nomeclientes']) ? $nomeclientes = $_SESSION['nomeclientes'] : "";
 $nomeclientes = $_SESSION['nomeclientes'];
 
+isset($_SESSION['idusuario']) ? $idusuario = $_SESSION['idusuario'] : "";
+$idusuario = $_SESSION['idusuario'];
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +33,7 @@ $nomeclientes = $_SESSION['nomeclientes'];
                 <?php
                 } else {
                 ?>
-                    <li class="profile">OLÁ <?= strtoupper($nomeclientess) ?>aa</li>
+                    <li class="profile">OLÁ <?= strtoupper($nomeclientes) ?>aa</li>
                 <?php
                     echo "<script>window.alert('USUARIO NÃO AUTENTICADO');window.location.href='login.php';</script>";
                 }

@@ -1,5 +1,7 @@
 <?php
 
+include('cabecalholoja.php');
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id = $_POST['id'];
     $nomeproduto = $_POST['nomeproduto'];
@@ -34,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             mysqli_query($link, $sql);
 
             #Insere o item no carrinho
-            $sql2 = "INSERT INTO item_carinho(fk_car_id, fk_pro_id, car_item_quantidade) VALUES ($numerocarrinho, $id, $quantidade)";
+            $sql2 = "INSERT INTO item_carrinho(fk_car_id, fk_pro_id, car_item_quantidade) VALUES ($numerocarrinho, $id, $quantidade)";
             mysqli_query($link, $sql2);
             $_SESSION['carrinhoid'] = $numerocarrinho;
             echo ("<script>window.alert('Produto Adicionado ao Carrinho $numerocarrinho');</script>");
@@ -49,12 +51,61 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $numerocarrinho = $tbl[0];
                 $_SESSION['carrinhoid'] = $numerocarrinho;
 
-                
+                #Verifica se já existe esse item ao carrinho
+                #Se já existe, atualiza a quantidade
+                $sql2 = "SELECT car_item_quantidade FROM item_carrinho WHERE fk_car_id = '$numerocarrinho' AND fk_pro_id = $id";
+                $retorno2 = mysqli_query($link,$sql2);
+                $qntd_atual = mysqli_fetch_array($retorno2);
+
+                if ($retorno2){
+                    if (mysqli_num_rows($retorno2) >= 1){
+                        $sql = "UPDATE item_carrinho SET car_item_quantidade = ($quantidade+$qntd_atual[0]) WHERE fk_car_id = '$numerocarrinho'";
+                        mysqli_query($link, $sql);
+                        echo ("<script>window.alert('Produto adicionado ao carrinho $numerocarrinho');</script>");
+                        echo ("<script>window.location.href='loja.php';</script>");
+                    }
+                    #Se já existe, adiciona o novo item
+                    else{
+                        $sql = "INSERT INTO item_carrinho(fk_car_id, fk_pro_id, car_item_quantidade) VALUES ('$numerocarrinho','$id',$quantidade)";
+                        mysqli_query($link,$sql);
+                        echo ("<script>window.alert('Produto adicionado ao carrinho $numerocarrinho');</script>");
+                        echo ("<script>window.location.href='loja.php';</script>");
+                    }
+                }
             }
         }
     }
+    echo ("<script>window.location.href='loja.php';</script>");
+    exit();
 }
 
+$id = $_GET['id'];
+$sql = "SELECT * FROM PRODUTOS WHERE prod_id = $id";
+$retorno = mysqli_query($link, $sql);
+while($tbl = mysqli_fetch_array($retorno)){
+    $id = $tbl[0];
+    $nomeproduto = $tbl[1];
+    $descricao = $tbl[2];
+    $preco = $tbl[4];
+    $imagem_atual = $tbl[6];
+}
+
+#Coraçãozinho dos favoritos
+
+if (isset($idusuario)){
+    $sql = "SELECT COUNT(fav_id) FROM favoritos WHERE fk_cli_id = $idusuario AND fk_pro_id = $id";
+    $retorno = mysqli_query($link, $sql);
+    while ($tbl = mysqli_fetch_array($retorno)){
+        $cont = $tbl[0];
+        if ($cont <= 0){
+            $coracao = "https://icones.pro/wp-content/uploads/2021/02/icone-de-coeur-noir.png";;
+        } else{
+            $coracao = "https://icones.pro/wp-content/uploads/2021/02/icone-de-coeur-rouge-1.png";;
+        }
+    }
+} else{
+    $coracao = "https://icones.pro/wp-content/uploads/2021/02/icone-de-coeur-noir.png";;
+}
 
 
 ?>
@@ -65,6 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produto</title>
+    <link rel="stylesheet" href="./css/estiloadm.css">
 </head>
 <body>
     <div class="formulario">
@@ -77,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             <label>Quantidade</label>
             <input type="number" name="quantidade" id="quantidade" min="0" value="1">
             <label>Preço</label>
-            <input type="number" name="preco" id="preco" step="0.01" value="R$ <?= $preco ?>" readonly>
+            <input type="number" name="preco" id="preco" step="0.01" value="<?= $preco ?>" readonly>
             <button id="btn">Adicionar ao Carrinho</button>
         </form>
     </div>
