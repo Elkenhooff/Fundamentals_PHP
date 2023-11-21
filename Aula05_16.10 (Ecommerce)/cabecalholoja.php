@@ -21,7 +21,7 @@ $idusuario = $_SESSION['idusuario'];
     <header>
         <nav>
             <ul class="menu">
-                <li><a href="loja.php">Home</a></li>
+                <li class="primeiro"><a href="loja.php">Home</a></li>
                 <li><a href="carrinho.php">Carrinho</a></li>
                 <li class="menuloja"><a href="logoutclientes.php">Sair</a></li>
 
@@ -29,11 +29,11 @@ $idusuario = $_SESSION['idusuario'];
                 <?php
                 if ($nomeclientes != null) {
                 ?>
-                    <li class="profile">OLÁ <?= strtoupper($nomeclientes) ?></li>
+                    <li class=""><a href="profile.php">OLÁ <?= strtoupper($nomeclientes) ?></a></li>
                 <?php
                 } else {
                 ?>
-                    <li class="profile">OLÁ <?= strtoupper($nomeclientes) ?>aa</li>
+                    <li class=""><a href="profile.php">OLÁ <?= strtoupper($nomeclientes) ?>aa</a></li>
                 <?php
                     echo "<script>window.alert('USUARIO NÃO AUTENTICADO');window.location.href='login.php';</script>";
                 }
