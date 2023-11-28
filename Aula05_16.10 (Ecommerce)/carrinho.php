@@ -29,26 +29,33 @@ while ($linhas = mysqli_fetch_assoc($retorno2)) {
 </head>
 
 <body>
-
+<div class="main-content3">
     <?php
     while ($tbl = mysqli_fetch_array($retorno)) {
     ?>
+        
             <div class="itens">
-                <img src="data:image/jpeg;base64,<?= $tbl[7] ?>" alt="Product Image">
-                <h3 class="titulo"><?= $tbl[4] ?></h3>
-                <h3 class="preco">R$ <?= $tbl[6] * $tbl[8] ?></h3>
-                <label>Quantidade</label>
+                <table>
+                <tr>
+                <td><img src="data:image/jpeg;base64,<?= $tbl[7] ?>" alt="Product Image"></td>
+                <td><h3 class="titulo"><?= $tbl[4] ?></h3></td>
+                <td><h3 class="preco">R$ <?= $tbl[6] * $tbl[8] ?></h3></td>
+                <td><label>Quantidade</label></td>
                 <div>
-                    <button onclick="location.href='atualizar_carrinho.php?var1=<?= $tbl[3] ?>&var2=<?= $tbl[8] - 1 ?>'" class="butao">-</button>
-                    <h3 class="titulo"><?= $tbl[8] ?></h3>
-                    <button onclick="location.href='atualizar_carrinho.php?var1=<?= $tbl[3] ?>&var2=<?= $tbl[8] + 1 ?>'" class="butao">+</button>
+                <td><button onclick="location.href='atualizar_carrinho.php?var1=<?= $tbl[3] ?>&var2=<?= $tbl[8] - 1 ?>'" class="butao">-</button></td>
+                <td><h3 class="number"><?= $tbl[8] ?></h3></td>
+                <td><button onclick="location.href='atualizar_carrinho.php?var1=<?= $tbl[3] ?>&var2=<?= $tbl[8] + 1 ?>'" class="butao">+</button></td>
                 </div>
                 <br>
-                <button onclick="location.href='deletaproduto_carrinho.php?var1=<?= $tbl[3] ?>&var2=<?= $tbl[0] ?>'" class="butao">Excluir do carrinho</button>
+                <td><button onclick="location.href='deletaproduto_carrinho.php?var1=<?= $tbl[3] ?>&var2=<?= $tbl[0] ?>'" class="butao">🗑</button></td>
+                </tr>
+                </table>
             </div>
+        
     <?php
     }
     ?>
+    </div>
     <div class="total" style="width: 100%; height: 30px; ">Total R$ <?= $total ?></div>
     <div class="total" style="width: 100%; height: 30px; "><a href="finaliza_carrinho.php?id=<?= ($idusuario) ?>">Finaliza Carrinho</a></div>
 </body>

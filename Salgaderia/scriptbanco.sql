@@ -5,6 +5,7 @@ USE Saguadim;
 CREATE TABLE usuarios(
     usu_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     usu_login VARCHAR(30) NOT NULL,
+    usu_email VARCHAR(100) NOT NULL,
     usu_senha VARCHAR(50) NOT NULL,
     usu_status CHAR(1) NOT NULL,
     usu_key VARCHAR(10) NOT NULL

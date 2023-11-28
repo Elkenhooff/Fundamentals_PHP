@@ -5,6 +5,7 @@ include("conectadb.php");
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $nome = $_POST['nomeusuario'];
     $senha = $_POST['senha'];
+    $tempero = "";
 
     #Busca o Tempero
     $sql = "SELECT usu_tempero FROM usuarios WHERE usu_nome = '$nome'";

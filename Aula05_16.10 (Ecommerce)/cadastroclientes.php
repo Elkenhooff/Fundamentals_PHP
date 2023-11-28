@@ -60,20 +60,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuário</title>
+    <title>Cadastro de Clientes</title>
     <link rel="stylesheet" href="./css/estiloadm.css">
 </head>
 
 <body>
     <div class="main-content">
         <form action="cadastroclientes.php" method="post">
-        <h2>Cadastro de Usuários</h2>
+        <h2>Cadastro de Clientes</h2>
             <input type="text" name="nome" id="nome" placeholder="Nome do Usuário" required>
             <br>
             <input type="email" name="email" id="nome" placeholder="Email" required>
             <br>
             <input type="password" name="senha" id="senha" placeholder="Senha" minlength ="8" maxlength="32" required>
             <span id="MostrarSenha" class="MostrarSenha" onclick="MostrarSenha()">👀</span>
+            <button type="button" id="login"><a href="loginclientes.php">Login</a></button>
             <br>
             <br>
             <button type="submit" name="cadastro" id="btn">Cadastrar</button>

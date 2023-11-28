@@ -35,7 +35,7 @@ $idusuario = $_SESSION['idusuario'];
                 ?>
                     <li class=""><a href="profile.php">OLÁ <?= strtoupper($nomeclientes) ?>aa</a></li>
                 <?php
-                    echo "<script>window.alert('USUARIO NÃO AUTENTICADO');window.location.href='login.php';</script>";
+                    echo "<script>window.alert('USUARIO NÃO AUTENTICADO');window.location.href='loginclientes.php';</script>";
                 }
                 ?>
 
