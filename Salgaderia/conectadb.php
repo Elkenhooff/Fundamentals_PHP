@@ -2,7 +2,7 @@
 $host = 'localhost';
 $dbname = 'Saguadim';
 $username = 'root';
-$password = '123@@';
+$password = '';
 
 try {
     // Estabelece uma conexao com o banco de dados MySQL

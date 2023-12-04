@@ -327,6 +327,17 @@ border: 2px solid #000000;
     max-width: 100px;
   }
 
+  .total{
+    background-color:#ffffff;
+    text-align: center;
+    
+    border: 3px solid black;
+    border-radius: 20px;
+    color: black;
+    font-size: 20px;
+    height: 50px;
+  }
+
   /* ______________ */
 
   #login, #cadast{
@@ -338,7 +349,10 @@ border: 2px solid #000000;
     color: #550469;  
   }
 
-  a:visited{
-    color: transparent;
+  a:link{
+    text-decoration: none;
+  }
+
+  a{
     color: #550469;
   }
