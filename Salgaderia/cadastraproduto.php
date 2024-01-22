@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $sql = "INSERT INTO produtos(pro_nome, pro_descricao, pro_custo, pro_preco, pro_quantidade, pro_validade, fk_for_id, pro_status) VALUES ('$nome','$descricao', $custo, $preco, $quantidade, '$validade', $fornecedor_id, 's')";
         mysqli_query($link,$sql);
         echo("<script>window.alert('Produto cadastrado com sucesso');</script>");
-        echo("<script>window.location.href='listaproduto.php';</script>");
+        echo("<script>window.location.href='listaprodutos.php';</script>");
     }
     else{
         echo("<script>window.alert('Produto já cadastrado');</script>");

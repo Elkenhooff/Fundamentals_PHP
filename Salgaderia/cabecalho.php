@@ -25,6 +25,7 @@ $nomeusuario = $_SESSION['nomeusuario'];
                 <li><a href="listaprodutos.php">Listar Produtos</a></li>
                 <li><a href="listacliente.php">Listar Clientes</a></li>
                 <li><a href="encomendas.php">Encomendas</a></li>
+                <li><a href="fornecedor.php">Fornecedor</a></li>
                 <li class="menuloja"><a href="logout.php">Sair</a></li>
 
 <!-- Valida se a sessão de usuário está autenticada, senão retorne para login. -->
