@@ -20,7 +20,7 @@ $nomeusuario = $_SESSION['nomeusuario'];
         <nav>
             <ul class="menu">
                 <li><a href="cadastrousuario.php">Cadastrar Usuário</a></li>
-                <li><a href="listausuario.php">Listar Usuário</a></li>
+                <li><a href="listausuarios.php">Listar Usuário</a></li>
                 <li><a href="cadastraproduto.php">Cadastrar Produto</a></li>
                 <li><a href="listaprodutos.php">Listar Produtos</a></li>
                 <li><a href="listacliente.php">Listar Clientes</a></li>
@@ -38,7 +38,7 @@ $nomeusuario = $_SESSION['nomeusuario'];
                 ?>
                     <li class="profile">OLÁ <?= strtoupper($nomeusuario) ?>aa</li>
                 <?php
-                    echo "<script>window.alert('USUARIO NÃO AUTENTICADO');window.location.href='login.php';</script>";
+                    echo "<script>window.alert('USUARIO NÃO AUTENTICADO');window.location.href='login.html';</script>";
                 }
                 ?>
 

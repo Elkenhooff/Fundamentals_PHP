@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     if ($retorno == 0){
         echo("<script>window.alert('Usuário Incorreto');</script>");
-        echo("<script>window.location.href='backoffice.php';</script>");
+        echo("<script>window.location.href='login.html';</script>");
     }
     else{
         $sql = "SELECT * FROM usuarios WHERE usu_email = '$email' AND usu_senha = '$senha' AND usu_status = 's'";

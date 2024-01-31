@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div class="main-content">
+    <div class="main-contentlogin">
       <div id="login">
         <form action="login.php" method="post">
           <label for="email">Email</label>
+          <br />
           <input
             type="email"
             name="email"
@@ -18,22 +19,25 @@
             placeholder="email@email.com"
             required
           />
+          <br />
           <label for="senha">Senha</label>
+          <br />
           <input
             type="password"
             name="senha"
             id="senha"
             placeholder="********"
           />
+          <br />
           <button type="submit" id="btn">Enviar</button>
         </form>
+        <h5>
+          <a href="#" id="toggleCadastra">Cadastre-se</a>
+        </h5>
       </div>
-      <h5>
-        <a href="#" id="toggleCadastra">Cadastrar</a>
-      </h5>
       <div id="cadastra">
         <form action="cadastra.php" method="post">
-            <label for="login">Login</label>
+          <label for="login">Login</label>
           <input
             type="text"
             name="login"
@@ -56,13 +60,14 @@
             id="senha"
             placeholder="********"
           />
-          <button type="submit" id="btn">Enviar</button>
+          <button type="submit" id="btn">Cadastrar</button>
           <h5>
             <a href="#" id="toggleLogin">Já possuí conta? Clique aqui</a>
           </h5>
         </form>
       </div>
     </div>
+    <script src="./js/script.js"></script>
   </body>
-  <script src="./js/script.js"></script>
 </html>
+
