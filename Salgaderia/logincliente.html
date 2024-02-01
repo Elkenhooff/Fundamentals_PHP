@@ -7,12 +7,48 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+    <div id="logincliente">
     <form action="logincliente.php" method="post">
         <label for="emailcliente">Email</label>
         <input type="text" name="emailcliente" placeholder="email@email.com"><br>
         <label for="senhacliente">Senha</label>
         <input type="password" name="senhacliente" placeholder="********"><br>
-        <button type="submit" id="btn">Login</button>
+        <button type="submit" id="btn1">Login</button>
+        <h2 onclick="CadastroLogin()">Cadastre-se</h2>
     </form>
+</div>
+<div id="cadastrocliente">
+    <form action="cadastrocliente.php" method="post">
+        <label for="nomecliente">Nome</label>
+        <input type="text" name="nomecliente" placeholder="nomenomenome"><br>
+        <label for="emailcliente">Email</label>
+        <input type="text" name="emailcliente" placeholder="email@email.com"><br>
+        <label for="senhacliente">Senha</label>
+        <input type="password" name="senhacliente" placeholder="********"><br>
+        <button type="submit" id="btn">Cadastrar</button>
+        <h2 onclick="CadastroLogin()">Login</h2>
+    </form>
+</div>
 </body>
+<style>
+    h2{
+        cursor: pointer;
+    }
+</style>
+<script>
+    /**/
+    var Login = true;
+    function CadastroLogin(){
+        if (Login){
+            document.getElementById("logincliente").style.display = "none";
+            document.getElementById("cadastrocliente").style.display = "block";
+            Login = false;
+        }
+        else{
+            document.getElementById("cadastrocliente").style.display = "none";
+            document.getElementById("logincliente").style.display = "block";
+            Login = true;
+        }
+    }
+</script>
 </html>

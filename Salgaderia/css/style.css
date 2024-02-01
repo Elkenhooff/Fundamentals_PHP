@@ -80,3 +80,12 @@
     */
     width: 80%;
   }
+
+  /* Login e Cadastro Cliente */
+  #cadastrocliente{
+    display: none;
+  }
+
+  #logincliente{
+    display: block;
+  }
