@@ -20,11 +20,19 @@
 <div id="cadastrocliente">
     <form action="cadastrocliente.php" method="post">
         <label for="nomecliente">Nome</label>
-        <input type="text" name="nomecliente" placeholder="nomenomenome"><br>
+        <input type="text" name="nomecliente" placeholder="xxxxxxxx"><br>
         <label for="emailcliente">Email</label>
-        <input type="text" name="emailcliente" placeholder="email@email.com"><br>
+        <input type="text" name="emailcliente" placeholder="xxxxxxxx@email.com"><br>
         <label for="senhacliente">Senha</label>
         <input type="password" name="senhacliente" placeholder="********"><br>
+        <label for="telefonecliente">Telefone</label>
+        <input type="tel" name="telefonecliente" placeholder="xxxxxxxx"><br>
+        <label for="cpfcliente">CPF</label>
+        <input type="number" name="cpfcliente" placeholder="xxxxxxxx"><br>
+        <label for="cursocliente">Curso</label>
+        <input type="text" name="cursocliente" placeholder="xxxxxxxx" min="0"><br>
+        <label for="salacliente">Sala</label>
+        <input type="number" name="salacliente" placeholder="xxxxxxxx"><br>
         <button type="submit" id="btn">Cadastrar</button>
         <h2 onclick="CadastroLogin()">Login</h2>
     </form>
