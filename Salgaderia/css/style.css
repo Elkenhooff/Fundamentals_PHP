@@ -89,3 +89,8 @@
   #logincliente{
     display: block;
   }
+
+/* Altera Usuário */
+  #confirmarForm{
+    display: none;
+  }

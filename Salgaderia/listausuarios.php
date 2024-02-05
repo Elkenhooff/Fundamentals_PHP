@@ -46,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
             <td>Usuário</td>
             <td>Email</td>
             <td>Status</td>
+            <td>Alterar Usuário</td>
         </tr>
         <?php
         while ($tbl = mysqli_fetch_array($retorno)){
@@ -55,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
                 <td><?=$tbl[1]?></td>
                 <td><?=$tbl[2]?></td>
                 <td><?=$tbl[3]?></td>
+                <td><button><a href="alterausuarios.php?id=<?=$tbl[0]?>">Alterar</button></a>
             </tr>
             <?php
             #Finaliza o fechamento do while.
