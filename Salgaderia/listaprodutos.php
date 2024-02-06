@@ -59,7 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <td><?=$tbl[3]?></td>
                 <td><?=$tbl[4]?></td>
                 <td><?=$tbl[5]?></td>
-                <td><a href="alteraproduto.php?id=<?=$tbl[6]?>"><input type="button" value="Alterar Produto"></td>
+                <td><a href="alteraprodutos.php?id=<?=$tbl[6]?>"><input type="button" value="Alterar Produto"></td>
                 </tr>
                 <?php
             }
