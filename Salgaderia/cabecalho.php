@@ -26,6 +26,11 @@ $nomeusuario = $_SESSION['nomeusuario'];
                 <li><a href="listacliente.php">Listar Clientes</a></li>
                 <li><a href="encomendas.php">Encomendas</a></li>
                 <li><a href="fornecedor.php">Fornecedor</a></li>
+                <li id="" onmousemove="fornecedor()" onmouseleave="fornecedor2()">Teste<ul id="teste">
+                    <li>Cadastrar Fornecedor</li>
+                    <li>Listar Fornecedor</li>
+                    <li>tetaejfeapo</li>
+                </ul></li>
                 <li class="menuloja"><a href="logout.php">Sair</a></li>
 
 <!-- Valida se a sessão de usuário está autenticada, senão retorne para login. -->
@@ -46,5 +51,12 @@ $nomeusuario = $_SESSION['nomeusuario'];
         </nav>
     </header>
 </body>
-
+<script>
+    function fornecedor(){
+            document.getElementById("teste").style.display = "block";
+    }
+    function fornecedor2(){
+            document.getElementById("teste").style.display = "none";
+    }
+    </script>
 </html>

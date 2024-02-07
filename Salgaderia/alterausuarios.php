@@ -3,11 +3,12 @@
 include("cabecalho.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $id = $_POST['id'];
     $nomeusuario = $_POST["nomeUsuario"];
     $status = $_POST["statusUsuario"];
     $senha = $_POST["senhaUsuario"];
 
-    $sql = "UPDATE usuarios SET usu_login = '$nomeusuario', usu_senha = '$senha', usu_status = '$status';";
+    $sql = "UPDATE usuarios SET usu_login = '$nomeusuario', usu_senha = '$senha', usu_status = '$status' WHERE usu_id = $id;";
     mysqli_query($link, $sql);
 
     echo ("<script>window.alert('Usuário alterado com sucesso!');</script>");
@@ -36,7 +37,8 @@ while($coluna = mysqli_fetch_array($retorno)){
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <form action="alterausuarios.php" method="post">  
+    <form action="alterausuarios.php" method="post">
+        <input type="hidden" name="id" value="<?=$id?>">  
         <label for="nomeUsuario">Usuário</label><br>
         <input type="text" name="nomeUsuario" value="<?=$nome?>" placeholder="Nome do Usuário" required>  
         <br>
