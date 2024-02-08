@@ -20,10 +20,10 @@ $nomeusuario = $_SESSION['nomeusuario'];
         <nav>
             <ul class="menu">
                 <li><a href="cadastrousuario.php">Cadastrar Usuário</a></li>
-                <li><a href="listausuarios.php">Listar Usuário</a></li>
                 <li><a href="cadastraproduto.php">Cadastrar Produto</a></li>
+                <li><a href="listausuarios.php">Listar Usuário</a></li>
                 <li><a href="listaprodutos.php">Listar Produtos</a></li>
-                <li><a href="listacliente.php">Listar Clientes</a></li>
+                <li><a href="listaclientes.php">Listar Clientes</a></li>
                 <li><a href="encomendas.php">Encomendas</a></li>
                 <li><a href="fornecedor.php">Fornecedor</a></li>
                 <li id="" onmousemove="fornecedor()" onmouseleave="fornecedor2()">Teste<ul id="teste">
