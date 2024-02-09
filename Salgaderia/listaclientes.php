@@ -1,7 +1,7 @@
 <?php
 include("cabecalho.php");
 
-$sql = "SELECT cli_nome, cli_email, cli_telefone, cli_status, cli_id FROM cliente;";
+$sql = "SELECT cli_nome, cli_email, cli_telefone, cli_sala, cli_curso, cli_status, cli_id FROM cliente WHERE cli_status ='s';";
 $retorno = mysqli_query($link, $sql);
 $ativo = "s";
 
@@ -9,15 +9,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ativo = $_POST['ativo'];
 
     if ($ativo == 's'){
-        $sql = "SELECT cli_nome, cli_email, cli_telefone, cli_status, cli_id FROM cliente;";
+        $sql = "SELECT cli_nome, cli_email, cli_telefone, cli_sala, cli_curso, cli_status, cli_id FROM cliente WHERE cli_status = 's';";
         $retorno = mysqli_query($link, $sql);
     }
     else if ($ativo == 'n'){
-        $sql = "SELECT cli_nome, cli_email, cli_telefone, cli_status, cli_id FROM cliente;";
+        $sql = "SELECT cli_nome, cli_email, cli_telefone, cli_sala, cli_curso, cli_status, cli_id FROM cliente WHERE cli_status = 'n';";
         $retorno = mysqli_query($link, $sql);
     }
     else{
-        $sql = "SELECT cli_nome, cli_email, cli_telefone, cli_status, cli_id FROM cliente;";
+        $sql = "SELECT cli_nome, cli_email, cli_telefone, cli_sala, cli_curso, cli_status, cli_id FROM cliente;";
         $retorno = mysqli_query($link, $sql);
     }
 }
@@ -43,6 +43,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Telefone</th>
+                <th>Sala</th>
+                <th>Curso</th>
                 <th>Status</th>
                 <th>Alterar</th>
             </tr>
@@ -55,7 +57,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <td><?=$tbl[1]?></td>
                 <td><?=$tbl[2]?></td>
                 <td><?=$tbl[3]?></td>
-                <td><a href="alteraclientes.php?id=<?=$tbl[4]?>"><input type="button" value="Alterar Produto"></td>
+                <td><?=$tbl[4]?></td>
+                <td><?=($tbl[5] == 's'?"Ativo":"Inativo")?></td>
+                <td><a href="alteraclientes.php?id=<?=$tbl[6]?>"><input type="button" value="Alterar Clientes"></td>
                 </tr>
                 <?php
             }

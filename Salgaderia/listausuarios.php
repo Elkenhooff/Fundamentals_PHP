@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
             <tr>
                 <td><?=$tbl[1]?></td>
                 <td><?=$tbl[2]?></td>
-                <td><?=$tbl[3]?></td>
+                <td><?=($tbl[3] == 's'?"Ativo":"Inativo")?></td>
                 <td><button><a href="alterausuarios.php?id=<?=$tbl[0]?>">Alterar</button></a>
             </tr>
             <?php
