@@ -12,23 +12,23 @@ $nomeusuario = $_SESSION['nomeusuario'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title></title>
 </head>
 
 <body>
     <header>
         <nav>
             <ul class="menu">
-                <li><a href="cadastrousuario.php">Cadastrar Usuário</a></li>
+                <li><a href="cadastraclientes.php">Cadastrar Clientes</a></li>
                 <li><a href="cadastraproduto.php">Cadastrar Produto</a></li>
                 <li><a href="listausuarios.php">Listar Usuário</a></li>
-                <li><a href="listaprodutos.php">Listar Produtos</a></li>
                 <li><a href="listaclientes.php">Listar Clientes</a></li>
+                <li><a href="listaprodutos.php">Listar Produtos</a></li>
                 <li><a href="encomendas.php">Encomendas</a></li>
                 <li><a href="fornecedor.php">Fornecedor</a></li>
                 <li id="" onmousemove="fornecedor()" onmouseleave="fornecedor2()">Teste<ul id="teste">
-                    <li>Cadastrar Fornecedor</li>
-                    <li>Listar Fornecedor</li>
+                    <li>Cadastrar asdsad</li>
+                    <li>Listar sadasdsa</li>
                     <li>tetaejfeapo</li>
                 </ul></li>
                 <li class="menuloja"><a href="logout.php">Sair</a></li>
