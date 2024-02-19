@@ -23,6 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $cliTelefone = $_POST['telefone'];
     $cliImagem = $_POST['foto'];
     $cliBanner = $_POST['banner'];
+
+    $sql = "UPDATE cliente SET cli_nome = '$cliNome', cli_descricao = '$cliDescricao', cli_telefone = '$cliTelefone', cli_imagem = '$cliImagem', cli_banner = '$banner' WHERE cli_id = $idcliente;";
+    mysqli_query($link,$sql);
+    echo ("<script>window.location.href='cliperfil.php';</script>");
 }
 
 ?>
@@ -43,11 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <img src="<?=($banner == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$banner)?>" id="imgbanner" name="foto"><br>
             <img src="<?=($imagem == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$imagem)?>" id="imgperfil" name="banner">
             </div>
-            <div class="perfilinf">
+            <div class="perfilinf" id="configperfil">
             <label>Nome</label>
             <input type="text" name="nome" value="<?=$nome?>"><br>
             <label>Descrição</label>
-            <textarea name="descricao" value=<?=$descricao?>></textarea><br><br>
+            <textarea name="descricao" ><?=$descricao?></textarea><br>
             <label>Telefone</label>
             <input type="tel" name="telefone" value="<?=$telefone?>"><br>
             <button type="submit" id="btn">Enviar</button>

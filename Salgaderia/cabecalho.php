@@ -18,19 +18,13 @@ $nomeusuario = $_SESSION['nomeusuario'];
 <body>
     <header>
         <nav>
-            <ul class="menu">
+            <ul id="" >
                 <li><a href="cadastraclientes.php">Cadastrar Clientes</a></li>
-                <li><a href="cadastraproduto.php">Cadastrar Produto</a></li>
-                <li><a href="listausuarios.php">Listar Usuário</a></li>
                 <li><a href="listaclientes.php">Listar Clientes</a></li>
+                <li><a href="cadastraproduto.php">Cadastrar Produto</a></li>
                 <li><a href="listaprodutos.php">Listar Produtos</a></li>
-                <li><a href="encomendas.php">Encomendas</a></li>
+                <li><a href="listausuarios.php">Listar Usuário</a></li>
                 <li><a href="fornecedor.php">Fornecedor</a></li>
-                <li id="" onmousemove="fornecedor()" onmouseleave="fornecedor2()">Teste<ul id="teste">
-                    <li>Cadastrar asdsad</li>
-                    <li>Listar sadasdsa</li>
-                    <li>tetaejfeapo</li>
-                </ul></li>
                 <li class="menuloja"><a href="logout.php">Sair</a></li>
 
 <!-- Valida se a sessão de usuário está autenticada, senão retorne para login. -->
@@ -51,12 +45,5 @@ $nomeusuario = $_SESSION['nomeusuario'];
         </nav>
     </header>
 </body>
-<script>
-    function fornecedor(){
-            document.getElementById("teste").style.display = "block";
-    }
-    function fornecedor2(){
-            document.getElementById("teste").style.display = "none";
-    }
-    </script>
+<script src="./js/script.js"></script>
 </html>
