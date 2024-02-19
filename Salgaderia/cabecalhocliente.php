@@ -26,7 +26,7 @@ $imagem = mysqli_fetch_array($retorno)[0];
                 <img src="<?=($imagem == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$imagem)?>" onclick="Perfil()" id="imag">
                 <ul id="perfil">
                     <li class=""><a href="cliperfil.php">Perfil</a></li>
-                    <li class=""><a href="cliconfig.php">Configurações</a></li>
+                    <li><a href="cliconfig.php">Configurações</a></li>
                     <li class=""><a href="logoutcliente.php">Sair</a></li>
                 </ul>
             </li>

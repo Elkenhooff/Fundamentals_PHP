@@ -14,6 +14,7 @@ while ($coluna = mysqli_fetch_array($retorno)){
     $sala = $coluna[6];
     $imagem = $coluna[10];
     $descricao = $coluna[11];
+    $banner = $coluna[12];
 }
 
 ?>
@@ -29,9 +30,13 @@ while ($coluna = mysqli_fetch_array($retorno)){
 <body>
     <div class="perfil">
         <div class="infoperfil">
+            <div class="perfilsup">
+            <img src="<?=($banner == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$banner)?>" id="imgbanner"><br>
+            <img src="<?=($imagem == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$imagem)?>" id="imgperfil">
+            </div>
+            <div class="perfilinf">
             <h2><?=$nome?></h2>
-            <p><?=$descricao?></p>
-            <img src="data:image/jpeg;base64,<?= $tbl[10]?>"><br>
+            <p><?=$descricao?></p><br><br>
             <label>Email</label>
             <p><?=$email?></p>
             <label>Telefone</label>
@@ -42,6 +47,7 @@ while ($coluna = mysqli_fetch_array($retorno)){
             <p><?=$curso?></p>
             <label>Sala</label>
             <p><?=$sala?></p>
+            </div>
         </div>
     </div>
 </body>

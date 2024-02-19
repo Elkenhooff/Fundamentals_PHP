@@ -82,16 +82,18 @@ nav ul li img:hover{
   width: 40px;
   border: 1px solid white;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 #perfil{
+  margin-left: 89.7%;
   display: grid;
   float: right;
   background-color: #888;
   position: absolute;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.9s ease-out, visibility 0.9s ease-out;
+  transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
 }
 #perfil.ativar{
   opacity: 1;
@@ -184,12 +186,51 @@ nav ul li img:hover{
   .perfil{
     display: flex;
     justify-content: center;
+    margin-bottom: 60px;
   }
-  .infoperfil img{
+  .perfilsup{
+    border-radius: 16px 16px 0px 0px;
+  }
+
+  .infoperfil{
+    border: 2px solid white;  
+    margin-top: 60px;
+    border-radius: 20px;
+    width: 600px;
+  }
+
+  .infoperfil #imgbanner{
+    border-radius: 16px 16px 0px 0px;
+    padding: 0;
+    width: 600px;
+    height: 200px;
+  }
+
+  .infoperfil #imgperfil{
     width: 100px;
     height: 100px;
-    border: 1px solid white; 
     border-radius: 50%;
     position: absolute;
-    margin-left: 160px;
+    margin-top: -5%;
+    margin-left: 32%;
+   }
+
+   .perfilinf{
+    padding: 0px 20px;
+   }
+   
+   .perfilinf h2{
+    margin-bottom: 0;
+   }
+
+   .infoperfil label{
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    line-height: 5px;
+   }
+   .infoperfil p{
+    font-size: 18px;
+    display: inline-block;
+    margin-bottom: 25px;
    }
