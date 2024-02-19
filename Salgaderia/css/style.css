@@ -1,10 +1,16 @@
 /* Reset de Estilos */
   html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
     color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
   }
+  ul {
+    padding: 0;
+    margin: 0;
+}
+
 
 /*Cor roxa nos links*/
   a:link{
@@ -15,6 +21,7 @@
     color: #fff;
   }
 
+  /* Configurações gerais */
   body{
     background-color: black;
   }
@@ -22,6 +29,82 @@
   #cadastra {
     display: none;
   }
+
+  /* Nav Bar */
+  nav{
+    background-color: #888;
+    height: 3rem;
+  }
+  
+  nav ul{
+    list-style-type: none;
+  }
+  
+  nav ul li{
+    display: inline;
+  }
+
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 10px; 
+    display: inline-block;
+    transition: 1.5s;
+    font-weight: 700;
+    font-size: 16px;
+    text-align: left;
+}
+
+nav ul li img{
+  color: #fff;
+  text-decoration: none;
+  transition: 1.5s;
+  font-size: 16px;
+}
+
+nav ul li a:hover{
+  color: #000;
+  background-color: #ccc;
+  border-radius: 15px;
+}
+
+nav ul li img:hover{
+  color: #000;
+  background-color: #ccc;
+  border-radius: 15px;
+}
+
+/* Nav Perfil */
+#imag{
+  float: right;
+  margin-right: 15px;
+  margin-top: 3px;
+  width: 40px;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+#perfil{
+  display: grid;
+  float: right;
+  background-color: #888;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.9s ease-out, visibility 0.9s ease-out;
+}
+#perfil.ativar{
+  opacity: 1;
+  visibility: visible;
+}
+#perfil.desativar{
+  opacity: 0;
+}
+
+#perfil li a{
+  width: 120px;
+}
+
   /* Pagina login html */
 
   .main-contentlogin{
@@ -70,9 +153,7 @@
     margin-top: -95px;
   }
 
-  #teste{
-    display: none;
-  }
+
 
   /* depois */
   table {
@@ -98,3 +179,17 @@
     display: none;
   }
 
+
+  /* Perfil */
+  .perfil{
+    display: flex;
+    justify-content: center;
+  }
+  .infoperfil img{
+    width: 100px;
+    height: 100px;
+    border: 1px solid white; 
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 160px;
+   }

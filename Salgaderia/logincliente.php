@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("conectadb.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -28,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     else{
         #Passa a SQL exijindo apenas o ID e o Nome do cliente.
-        $sql = "SELECT cli_id, cli_nome FROM cliente WHERE cli_email = '$email' AND cli_senha = '$senha';";
+        $sql = "SELECT * FROM cliente WHERE cli_email = '$email' AND cli_senha = '$senha';";
         $retorno = mysqli_query($link, $sql);
 
         #Pega os valores da coluna 0 e 1 e insira eles em uma varíavel de sessão.
@@ -38,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         }
 
         #Encaminha para pagina principal.
-        header("Location: encomendas.php");
+        echo("<script>window.location.href='encomendas.php';</script>");
     }
 }
 ?>

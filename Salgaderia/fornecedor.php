@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         echo("<script>window.location.href='fornecedor.php'</script>");
     }
 }    
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="pt-br">
