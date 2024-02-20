@@ -44,8 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <form action="cliconfig.php" method="post" enctype="multipart/form-data">
         <div class="infoperfil">
             <div class="perfilsup">
-            <img src="<?=($banner == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$banner)?>" id="imgbanner" name="foto"><br>
+            <img src="<?=($banner == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$banner)?>" id="imgbanner" name="foto">
+            <i><img src="./img/imgbanner.png"  id="editar"></i>
             <img src="<?=($imagem == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$imagem)?>" id="imgperfil" name="banner">
+            <i><img src="./img/imgbanner.png"  id="editar2"></i>
             </div>
             <div class="perfilinf" id="configperfil">
             <label>Nome</label>
@@ -54,6 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <textarea name="descricao" ><?=$descricao?></textarea><br>
             <label>Telefone</label>
             <input type="tel" name="telefone" value="<?=$telefone?>"><br>
+            <input type="file" name="banner">
+            <input type="file" name="foto"><br>
             <button type="submit" id="btn">Enviar</button>
             </div>
         </div>

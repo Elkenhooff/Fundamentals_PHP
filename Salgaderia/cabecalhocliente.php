@@ -28,8 +28,8 @@ $imagem = mysqli_fetch_array($retorno)[0];
                     <li class=""><a href="cliperfil.php">Perfil</a></li>
                     <li><a href="cliconfig.php">Configurações</a></li>
                     <li class=""><a href="logoutcliente.php">Sair</a></li>
-                </ul>
-</li>
+                    </ul>
+                </li>
             </li>
     <!-- Valida se a sessão de usuário está autenticada, senão retorne para login. -->
                 <?php

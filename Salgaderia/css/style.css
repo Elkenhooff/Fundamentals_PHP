@@ -193,6 +193,26 @@ nav ul li img:hover{
     border-radius: 16px 16px 0px 0px;
   }
 
+  .perfilsup #editar, .perfilsup #editar2{
+    position: absolute;
+    width: 20px;
+    background-color: white;
+    border-radius: 50%;
+  }
+
+  .perfilsup #editar{
+    margin-top: -25px;
+  }
+
+  .perfilsup #editar2{
+    margin-top: 20px;
+    margin-left: -30px;
+  }
+
+  .perfilinf input[type="file"]{
+    display: none;
+  }
+
   .infoperfil{
     border: 2px solid white;  
     margin-top: 60px;

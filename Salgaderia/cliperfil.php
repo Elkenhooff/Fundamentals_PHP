@@ -31,7 +31,7 @@ while ($coluna = mysqli_fetch_array($retorno)){
     <div class="perfil">
         <div class="infoperfil">
             <div class="perfilsup">
-            <img src="<?=($banner == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$banner)?>" id="imgbanner"><br>
+            <img src="<?=($banner == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$banner)?>" id="imgbanner">
             <img src="<?=($imagem == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$imagem)?>" id="imgperfil">
             </div>
             <div class="perfilinf">
