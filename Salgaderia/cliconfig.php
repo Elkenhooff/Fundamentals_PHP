@@ -21,12 +21,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $cliNome = $_POST['nome'];
     $cliDescricao = $_POST['descricao'];
     $cliTelefone = $_POST['telefone'];
-    $cliImagem = $_POST['foto'];
-    $cliBanner = $_POST['banner'];
+    
+    if (isset($_FILES['banner']) && $_FILES['banner']['error'] === UPLOAD_ERR_OK){
+        $imagem_temp = $_FILES['banner']['tmp_name'];
+        $imagembanner = file_get_contents($imagem_temp);
+        $imagembanner64 = base64_encode($imagembanner);
+    }
 
-    $sql = "UPDATE cliente SET cli_nome = '$cliNome', cli_descricao = '$cliDescricao', cli_telefone = '$cliTelefone', cli_imagem = '$cliImagem', cli_banner = '$banner' WHERE cli_id = $idcliente;";
+    if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK){
+        $imagem_temp = $_FILES['foto']['tmp_name'];
+        $imagemfoto = file_get_contents($imagem_temp);
+        $imagemfoto64 = base64_encode($imagembanner);
+    }
+
+    
+    $sql = "UPDATE cliente SET cli_nome = '$cliNome', cli_descricao = '$cliDescricao', cli_telefone = '$cliTelefone' WHERE cli_id = $idcliente;";
+    mysqli_query($link,$sql);
+    $sql = "UPDATE cliente SET cli_imagem = '$imagemfoto64' WHERE cli_id = $idcliente";
+    mysqli_query($link,$sql);
+    $sql = "UPDATE cliente SET cli_banner = '$imagembanner64'  WHERE cli_id = $idcliente";
     mysqli_query($link,$sql);
     echo ("<script>window.location.href='cliperfil.php';</script>");
+
+      
 }
 
 ?>
@@ -45,9 +62,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="infoperfil">
             <div class="perfilsup">
             <img src="<?=($banner == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$banner)?>" id="imgbanner" name="foto">
-            <i><img src="./img/imgbanner.png"  id="editar"></i>
+            <i><img src="./img/imgbanner.png" id="editar"></i>
             <img src="<?=($imagem == null?'./img/noimg.jfif':'data:image/jpeg;base64,'.$imagem)?>" id="imgperfil" name="banner">
-            <i><img src="./img/imgbanner.png"  id="editar2"></i>
+            <i><img src="./img/imgbanner.png" id="editar2"></i>
             </div>
             <div class="perfilinf" id="configperfil">
             <label>Nome</label>
@@ -56,12 +73,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <textarea name="descricao" ><?=$descricao?></textarea><br>
             <label>Telefone</label>
             <input type="tel" name="telefone" value="<?=$telefone?>"><br>
-            <input type="file" name="banner">
-            <input type="file" name="foto"><br>
+            <input type="file" name="banner" id="inputbanner">
+            <input type="file" name="foto" id="inputfoto"><br>
             <button type="submit" id="btn">Enviar</button>
             </div>
         </div>
     </form>
     </div>
 </body>
+<script>
+    document.getElementById("editar").addEventListener("click", function (){
+        document.getElementById("inputbanner").click();
+    })
+
+    document.getElementById("editar2").addEventListener("click", function (){
+        document.getElementById("inputfoto").click();
+    })
+    </script>
+
 </html> 
